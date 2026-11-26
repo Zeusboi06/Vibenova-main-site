@@ -1721,3 +1721,233 @@ section {
     transform: none;
   }
 }
+
+/* ==========================================================================
+   NEW ADDITIONS — Work cards, Automations contact module, Logo strip, Final CTA
+   Added for: Work section redesign + case studies + automations contact
+   ========================================================================== */
+
+/* --- Work card logo area -------------------------------------------------- */
+.work-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-logo-area {
+  position: relative;
+  min-height: 56px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.work-logo {
+  max-height: 48px;
+  max-width: 160px;
+  object-fit: contain;
+  display: block;
+}
+
+/* When image loads successfully, hide the placeholder */
+.work-logo:not([src=""]):not([style*="display:none"]) + .work-logo-placeholder {
+  display: none;
+}
+
+.work-logo-placeholder {
+  height: 48px;
+  width: 100%;
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: var(--radius-sm);
+  border: 1px dashed rgba(212, 175, 55, 0.22);
+}
+
+.work-category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-main);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.work-cta {
+  margin-top: auto;
+  align-self: flex-start;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+}
+
+/* --- Automations contact module ------------------------------------------- */
+.automations-contact-module {
+  margin-top: 2.5rem;
+  padding: 2rem 1.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-md);
+}
+
+.automations-contact-module h4 {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
+.automations-contact-module > p {
+  color: var(--text-muted-light);
+  font-size: 0.95rem;
+  margin-bottom: 1.75rem;
+  max-width: 60ch;
+}
+
+.automations-contact-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.contact-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  display: block;
+  margin-bottom: 0.9rem;
+}
+
+.automations-form {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.automations-form input {
+  min-height: 44px;
+  padding: 0.65rem 0.9rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-sm);
+  color: var(--text-light);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  width: 100%;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.automations-form input::placeholder {
+  color: var(--text-muted-light);
+}
+
+.automations-form input:focus {
+  outline: none;
+  border-color: var(--gold-main);
+}
+
+.automations-form-status {
+  font-size: 0.85rem;
+  min-height: 1.2em;
+  color: var(--gold-bright);
+}
+
+.automations-form-status.error {
+  color: #e57070;
+}
+
+.contact-whatsapp-side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-whatsapp-side > p {
+  color: var(--text-muted-light);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.automations-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  align-self: flex-start;
+}
+
+@media (max-width: 720px) {
+  .automations-contact-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Logo strip (hidden by default — uncomment HTML when ready) ----------- */
+.logo-strip {
+  padding: 3rem 0;
+}
+
+.logo-strip-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted-light);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo-strip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.client-logo-mono {
+  height: 36px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0.5);
+  opacity: 0.5;
+  transition: opacity var(--dur-base) var(--ease-out), filter var(--dur-base) var(--ease-out);
+}
+
+.client-logo-mono:hover {
+  opacity: 0.8;
+  filter: grayscale(0.5) brightness(0.9);
+}
+
+/* --- Final CTA section ----------------------------------------------------- */
+.final-cta {
+  padding: var(--section-pad) 0;
+}
+
+.final-cta-inner {
+  text-align: center;
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+.final-cta-inner h2 {
+  margin-bottom: 1rem;
+}
+
+.final-cta-inner > p {
+  color: var(--text-muted-light);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+}
+
+.final-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* --- btn-outline-light variant (used in hero + final CTA) ----------------- */
+/* already defined in core CSS; no duplicate needed */

@@ -154,4 +154,69 @@ document.addEventListener("DOMContentLoaded", () => {
   if (yearEl) {
     yearEl.textContent = String(new Date().getFullYear());
   }
+
+  // 5. Automations contact form
+  const automationsForm = document.getElementById("automations-form");
+  if (automationsForm) {
+    const statusEl = automationsForm.querySelector(".automations-form-status");
+
+    function setStatus(msg, isError = false) {
+      if (!statusEl) return;
+      statusEl.textContent = msg;
+      statusEl.classList.toggle("error", isError);
+    }
+
+    automationsForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = automationsForm.querySelector("[name='name']").value.trim();
+      const email = automationsForm.querySelector("[name='email']").value.trim();
+      const enquiry = automationsForm.querySelector("[name='enquiry']").value.trim();
+
+      if (!name || !email || !enquiry) {
+        setStatus("Please fill in all fields.", true);
+        return;
+      }
+
+      const submitBtn = automationsForm.querySelector("button[type='submit']");
+      const originalText = submitBtn ? submitBtn.textContent : "";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+      }
+      setStatus("");
+
+      try {
+        const res = await fetch("/api/audit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            source: "automations-form",
+            name,
+            email,
+            enquiry,
+          }),
+        });
+
+        if (res.ok) {
+          setStatus("Enquiry sent — we will be in touch shortly.");
+          automationsForm.reset();
+        } else {
+          throw new Error("Server error");
+        }
+      } catch {
+        // Fallback: open mailto
+        const subject = encodeURIComponent("Automation Enquiry — VibeNova");
+        const body = encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}\n\nEnquiry:\n${enquiry}`
+        );
+        window.location.href = `mailto:growth@vibenova.in?subject=${subject}&body=${body}`;
+        setStatus("Opening your email client…");
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      }
+    });
+  }
 });
