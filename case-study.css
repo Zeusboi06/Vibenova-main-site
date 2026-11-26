@@ -74,7 +74,8 @@
 
 .cs-logo-pakelo {
   max-height: 60px;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+  border-radius: 5px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
 }
 
 .cs-logo-aero {
