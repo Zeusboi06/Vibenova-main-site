@@ -1735,32 +1735,24 @@ section {
 
 .work-logo-area {
   position: relative;
-  height: 54px;
+  height: 52px;
   margin-bottom: 1.15rem;
   display: flex;
   align-items: center;
 }
 
 .work-logo {
-  max-height: 46px;
-  max-width: 195px;
+  max-height: 48px;
+  max-width: 185px;
   width: auto;
   height: auto;
   object-fit: contain;
   display: block;
+  transition: transform var(--dur-base) var(--ease-out);
 }
 
-/* When image loads successfully, hide the placeholder */
-.work-logo:not([src=""]):not([style*="display:none"]) + .work-logo-placeholder {
-  display: none;
-}
-
-.work-logo-placeholder {
-  height: 48px;
-  width: 100%;
-  background: rgba(212, 175, 55, 0.05);
-  border-radius: var(--radius-sm);
-  border: 1px dashed rgba(212, 175, 55, 0.22);
+.work-card:hover .work-logo {
+  transform: translateY(-2px);
 }
 
 .work-category {

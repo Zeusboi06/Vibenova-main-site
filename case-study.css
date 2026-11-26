@@ -51,7 +51,7 @@
 }
 
 .cs-logo-area {
-  min-height: 76px;
+  min-height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,30 +59,27 @@
 }
 
 .cs-logo {
-  max-height: 76px;
+  max-height: 72px;
   max-width: 280px;
   width: auto;
   height: auto;
   object-fit: contain;
+  display: block;
 }
 
-.cs-logo:not([src=""]):not([style*="display:none"]) + .cs-logo-placeholder {
-  display: none;
+.cs-logo-sholay {
+  max-height: 84px;
+  filter: drop-shadow(0 4px 20px rgba(212, 175, 55, 0.25)) drop-shadow(0 0 1px rgba(255, 255, 255, 0.4));
 }
 
-.cs-logo-placeholder {
-  height: 68px;
-  width: 180px;
-  background: rgba(212, 175, 55, 0.05);
-  border: 1px dashed rgba(212, 175, 55, 0.22);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.72rem;
-  color: rgba(212, 175, 55, 0.4);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.cs-logo-pakelo {
+  max-height: 60px;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+}
+
+.cs-logo-aero {
+  max-height: 52px;
+  filter: drop-shadow(0 2px 12px rgba(0, 168, 232, 0.25));
 }
 
 .cs-category {
